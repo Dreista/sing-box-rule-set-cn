@@ -39,7 +39,8 @@ def convert_dnsmasq(url: str) -> str:
         for line in lines:
             if not line.startswith("#"):
                 domain = re.match(r"server=\/(.*)\/(.*)", line)
-                domain_suffix_list.append(domain.group(1))
+                if domain:
+                    domain_suffix_list.append(domain.group(1))
     result = {
         "version": 1,
         "rules": [
