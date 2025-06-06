@@ -187,6 +187,9 @@ def main():
     for url in adguard:
         filepath = get_adguard(url)
         files_adguard.append(filepath)
+    for url in gfwlist:
+        filepath = get_gfwlist(url)
+        files_gfwlist.append(filepath)
     print("rule-set source:")
     for filepath in files:
         print(filepath)
