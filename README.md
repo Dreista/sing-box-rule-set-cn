@@ -59,6 +59,12 @@ Generated & aggregated daily from mulitple sources. Rule sets available at `rule
                 "type": "remote",
                 "format": "binary",
                 "url": "https://raw.githubusercontent.com/Dreista/sing-box-rule-set-cn/rule-set/filter.txt.srs"
+            },
+            {
+                "tag": "GFWList",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Dreista/sing-box-rule-set-cn/rule-set/gfwlist.txt.srs"
             }
         ]
     }
@@ -122,3 +128,11 @@ Source: https://github.com/AdguardTeam/AdGuardSDNSFilter
 ### filter.txt
 
 [Rule set](/../../raw/rule-set/filter.txt.srs) ([source](/../../raw/rule-set/filter.txt))
+
+## gfwlist/gfwlist
+
+Source: https://github.com/gfwlist/gfwlist
+
+### filter.txt
+
+[Rule set](/../../raw/rule-set/gfwlist.txt.srs) ([source](/../../raw/rule-set/gfwlist.txt))
