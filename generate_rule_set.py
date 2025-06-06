@@ -28,6 +28,10 @@ adguard = [
     "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt"
 ]
 
+gfwlist = [
+    "https://raw.githubusercontent.com/gfwlist/gfwlist/refs/heads/master/list.txt"
+]
+
 output_dir = "./rule-set"
 
 
@@ -153,6 +157,12 @@ def get_adguard(url: str) -> str:
         f.write(r.content)
     return filepath
 
+def get_gfwlist(url: str) -> str:
+    r = requests.get(url)
+    filepath = os.path.join(output_dir, "gfwlist.txt")
+    with open(filepath, "wb") as f:
+        f.write(r.content)
+    return filepath
 
 def main():
     files = []
@@ -190,7 +200,10 @@ def main():
         srs_path = filepath + ".srs"
         os.system("sing-box rule-set convert --type adguard --output " +
                   srs_path + " " + filepath)
-
+    for filepath in files_gfwlist:
+        srs_path = filepath + ".srs"
+        os.system("sing-box rule-set convert --type adguard --output " +
+                  srs_path + " " + filepath)
 
 if __name__ == "__main__":
     main()
