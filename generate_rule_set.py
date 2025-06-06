@@ -189,7 +189,7 @@ def main():
         files_adguard.append(filepath)
     for url in gfwlist:
         filepath = get_gfwlist(url)
-        files_gfwlist.append(filepath)
+        files_adguard.append(filepath)
     print("rule-set source:")
     for filepath in files:
         print(filepath)
@@ -200,10 +200,6 @@ def main():
         os.system("sing-box rule-set compile --output " +
                   srs_path + " " + filepath)
     for filepath in files_adguard:
-        srs_path = filepath + ".srs"
-        os.system("sing-box rule-set convert --type adguard --output " +
-                  srs_path + " " + filepath)
-    for filepath in files_gfwlist:
         srs_path = filepath + ".srs"
         os.system("sing-box rule-set convert --type adguard --output " +
                   srs_path + " " + filepath)
