@@ -13,7 +13,7 @@ jobs:
       contents: write
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: "Setup sing-box"
         env:
           SING_BOX_DEB_URL: "https://github.com/SagerNet/sing-box/releases/download/v1.11.0/sing-box_1.11.0_linux_amd64.deb"
