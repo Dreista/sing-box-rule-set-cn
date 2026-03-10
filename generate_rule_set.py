@@ -46,7 +46,7 @@ def convert_dnsmasq(url: str) -> str:
                 if domain:
                     domain_suffix_list.append(domain.group(1))
     result = {
-        "version": 1,
+        "version": 2,
         "rules": [
             {
                 "domain_suffix": []
@@ -69,7 +69,7 @@ def convert_chnroutes2(url: str) -> str:
             if not line.startswith("#"):
                 ip_cidr_list.append(line)
     result = {
-        "version": 1,
+        "version": 2,
         "rules": [
             {
                 "ip_cidr": []
@@ -98,7 +98,7 @@ def convert_apnic(url: str, country_code: str, ip_version: str) -> str:
                         ip_cidr_list.append(line.split(
                             "|")[3] + "/" + line.split("|")[4])
     result = {
-        "version": 1,
+        "version": 2,
         "rules": [
             {
                 "ip_cidr": []
@@ -135,7 +135,7 @@ def convert_maxmind(url: str, country_code: str, ip_version: str) -> str:
                     ip_cidr_list.append(str(cidr))
     reader.close()
     result = {
-        "version": 1,
+        "version": 2,
         "rules": [
             {
                 "ip_cidr": []
@@ -206,3 +206,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
