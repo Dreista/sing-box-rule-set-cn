@@ -154,6 +154,37 @@ def convert_maxmind(url: str, country_code: str, ip_version: str, result_prefix:
     return filepath
 
 
+def convert_ipinfo_lite(url: str, country_code: str, ip_version: str, result_prefix: str) -> str:
+    r = requests.get(url)
+    with open("temp.mmdb", "wb") as f:
+        f.write(r.content)
+    f.close()
+    reader = maxminddb.open_database("temp.mmdb")
+    ip_cidr_list = []
+    for cidr, info in reader.__iter__():
+        if info.get("country") is not None:
+            if info["country_code"] == country_code:
+                if ip_version == "ipv4" and cidr.version == 4:
+                    ip_cidr_list.append(str(cidr))
+                elif ip_version == "ipv6" and cidr.version == 6:
+                    ip_cidr_list.append(str(cidr))
+    reader.close()
+    result = {
+        "version": 2,
+        "rules": [
+            {
+                "ip_cidr": []
+            }
+        ]
+    }
+    result["rules"][0]["ip_cidr"] = aggregate(ip_cidr_list)
+    filepath = os.path.join(output_dir, result_prefix + "-" +
+                            country_code.lower() + "-" + ip_version + ".json")
+    with open(filepath, "w") as f:
+        f.write(json.dumps(result, indent=4))
+    return filepath
+
+
 def get_adguard(url: str) -> str:
     r = requests.get(url)
     filepath = os.path.join(output_dir, url.split("/")[-1])
@@ -189,9 +220,9 @@ def main():
         filepath = convert_maxmind(url, "CN", "ipv6", "maxmind")
         files.append(filepath)
     for url in ipinfo_lite:
-        filepath = convert_maxmind(url, "CN", "ipv4", "ipinfo-lite")
+        filepath = convert_ipinfo_lite(url, "CN", "ipv4", "ipinfo-lite")
         files.append(filepath)
-        filepath = convert_maxmind(url, "CN", "ipv6", "ipinfo-lite")
+        filepath = convert_ipinfo_lite(url, "CN", "ipv6", "ipinfo-lite")
         files.append(filepath)
     for url in adguard:
         filepath = get_adguard(url)
