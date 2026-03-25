@@ -29,7 +29,9 @@ ipinfo_lite = [
 ]
 
 adguard = [
-    "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt"
+    "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt",
+    "https://github.com/hagezi/dns-blocklists/raw/refs/heads/main/adblock/pro.txt",
+    "https://github.com/hagezi/dns-blocklists/raw/refs/heads/main/adblock/pro.mini.txt",
 ]
 
 gfwlist = [
