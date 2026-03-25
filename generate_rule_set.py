@@ -24,6 +24,10 @@ maxmind = [
     "https://raw.githubusercontent.com/Dreamacro/maxmind-geoip/release/Country.mmdb"
 ]
 
+ipinfo_lite = [
+    "https://ipinfo.io/data/ipinfo_lite.mmdb?token=" + os.environ.get("IPINFO_LITE_TOKEN")
+]
+
 adguard = [
     "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt"
 ]
@@ -113,12 +117,12 @@ def convert_apnic(url: str, country_code: str, ip_version: str) -> str:
     return filepath
 
 
-def convert_maxmind(url: str, country_code: str, ip_version: str) -> str:
+def convert_maxmind(url: str, country_code: str, ip_version: str, result_prefix: str) -> str:
     r = requests.get(url)
-    with open("Country.mmdb", "wb") as f:
+    with open("temp.mmdb", "wb") as f:
         f.write(r.content)
     f.close()
-    reader = maxminddb.open_database("Country.mmdb")
+    reader = maxminddb.open_database("temp.mmdb")
     ip_cidr_list = []
     for cidr, info in reader.__iter__():
         if info.get("country") is not None:
@@ -143,7 +147,7 @@ def convert_maxmind(url: str, country_code: str, ip_version: str) -> str:
         ]
     }
     result["rules"][0]["ip_cidr"] = aggregate(ip_cidr_list)
-    filepath = os.path.join(output_dir, "maxmind-" +
+    filepath = os.path.join(output_dir, result_prefix + "-" +
                             country_code.lower() + "-" + ip_version + ".json")
     with open(filepath, "w") as f:
         f.write(json.dumps(result, indent=4))
@@ -180,9 +184,14 @@ def main():
         filepath = convert_apnic(url, "CN", "ipv6")
         files.append(filepath)
     for url in maxmind:
-        filepath = convert_maxmind(url, "CN", "ipv4")
+        filepath = convert_maxmind(url, "CN", "ipv4", "maxmind")
         files.append(filepath)
-        filepath = convert_maxmind(url, "CN", "ipv6")
+        filepath = convert_maxmind(url, "CN", "ipv6", "maxmind")
+        files.append(filepath)
+    for url in ipinfo_lite:
+        filepath = convert_maxmind(url, "CN", "ipv4", "ipinfo-lite")
+        files.append(filepath)
+        filepath = convert_maxmind(url, "CN", "ipv6", "ipinfo-lite")
         files.append(filepath)
     for url in adguard:
         filepath = get_adguard(url)
