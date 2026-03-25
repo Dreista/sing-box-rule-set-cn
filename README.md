@@ -153,6 +153,18 @@ Source: https://github.com/AdguardTeam/AdGuardSDNSFilter
 
 [Rule set](/../../raw/rule-set/filter.txt.srs) ([source](/../../raw/rule-set/filter.txt))
 
+## hagezi/dns-blocklists
+
+Source: https://github.com/hagezi/dns-blocklists
+
+### Multi PRO
+
+[Rule set](/../../raw/rule-set/pro.txt.srs) ([source](/../../raw/rule-set/pro.txt))
+
+### Multi PRO mini
+
+[Rule set](/../../raw/rule-set/pro.mini.txt.srs) ([source](/../../raw/rule-set/pro.mini.txt))
+
 ## gfwlist/gfwlist
 
 Source: https://github.com/gfwlist/gfwlist
