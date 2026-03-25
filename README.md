@@ -49,6 +49,18 @@ Generated & aggregated daily from mulitple sources. Rule sets available at `rule
                 "url": "https://raw.githubusercontent.com/Dreista/sing-box-rule-set-cn/rule-set/maxmind-cn-ipv6.srs"
             },
             {
+                "tag": "GeoIP-IPinfo-Lite-CN-IPv4",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Dreista/sing-box-rule-set-cn/rule-set/ipinfo-lite-cn-ipv4.srs"
+            },
+            {
+                "tag": "GeoIP-IPinfo-Lite-CN-IPv6",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Dreista/sing-box-rule-set-cn/rule-set/ipinfo-lite-cn-ipv6.srs"
+            },
+            {
                 "tag": "GeoIP-ChnRoutes2-CN-IPv4",
                 "type": "remote",
                 "format": "binary",
@@ -120,6 +132,18 @@ Source: https://github.com/Dreamacro/maxmind-geoip
 ### maxmind-cn-ipv6
 
 [Rule set](/../../raw/rule-set/maxmind-cn-ipv6.srs) ([source](/../../raw/rule-set/maxmind-cn-ipv6.json))
+
+## IPinfo Lite Database
+
+Source: https://ipinfo.io/developers/ipinfo-lite-database
+
+### ipinfo-lite-cn-ipv4
+
+[Rule set](/../../raw/rule-set/ipinfo-lite-cn-ipv4.srs) ([source](/../../raw/rule-set/ipinfo-lite-cn-ipv4.json))
+
+### ipinfo-lite-cn-ipv6
+
+[Rule set](/../../raw/rule-set/ipinfo-lite-cn-ipv6.srs) ([source](/../../raw/rule-set/ipinfo-lite-cn-ipv6.json))
 
 ## AdguardTeam/AdGuardSDNSFilter
 
