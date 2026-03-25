@@ -73,6 +73,18 @@ Generated & aggregated daily from mulitple sources. Rule sets available at `rule
                 "url": "https://raw.githubusercontent.com/Dreista/sing-box-rule-set-cn/rule-set/filter.txt.srs"
             },
             {
+                "tag": "DNS-Blocklists-Multi-Pro",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Dreista/sing-box-rule-set-cn/rule-set/pro.txt.srs"
+            },
+            {
+                "tag": "DNS-Blocklists-Multi-Pro-Mini",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Dreista/sing-box-rule-set-cn/rule-set/pro.mini.txt.srs"
+            },
+            {
                 "tag": "GFWList",
                 "type": "remote",
                 "format": "binary",
