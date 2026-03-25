@@ -9,6 +9,7 @@ jobs:
   update-rule-set:
     name: "Update sing-box rule-set"
     runs-on: ubuntu-latest
+    environment: sing-box-rule-set-cn
     permissions:
       contents: write
     steps:
